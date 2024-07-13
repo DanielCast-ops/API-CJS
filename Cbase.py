@@ -79,7 +79,7 @@ def crear_tablas():
 
     Print("Se han creado las tablas")
 
-conneccion()
+conneccion("CJS.db")
 crear tablas()
 con.close()
 
