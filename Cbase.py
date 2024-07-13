@@ -9,7 +9,6 @@ def coneccion(base):
     con = sqlite3.connect(base)
     #Cremos el cursor
     cursor = con.cursor()
-    #cerrar la coneccion
 
 #creamos las tablas
 def crear_tablas():
@@ -79,9 +78,12 @@ def crear_tablas():
 
     Print("Se han creado las tablas")
 
-conneccion("CJS.db")
-crear tablas()
-con.close()
+#definimos la funcion para usarla desde nuestro escript principal
+
+def crear_base(base):
+    conneccion(base)
+    crear tablas()
+    con.close()
 
 
 
