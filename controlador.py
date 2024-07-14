@@ -7,10 +7,9 @@ import sqlite3
 #creamos la clase que contrlara la  base de datos utilizando POO
 
 class base_de_datos:
-    def __init__(self, nombredb)
-    self.nombredb = nombredb
-    self.conexion = sqlite3.connect(nombre.db)
-    self.cursor = self.conexion.cursor()
+    def __init__(self, nombredb):
+        self.conexion = sqlite3.connect(nombredb)
+        self.cursor = self.conexion.cursor()
 
     #realizamos funcion que nos permita gestionar las consultas.
 
@@ -35,8 +34,8 @@ class base_de_datos:
 # clase cargo
 
 class Cargo:
-    def __init__(self, nombre_db):
-        self.base_de_datos = BaseDeDatos(nombre_db)
+    def __init__(self, nombredb):
+        self.base_de_datos = base_de_datos(nombredb)
 
     def crear_cargo(self, cargo):
         consulta = 'INSERT INTO cargos (cargo) VALUES (?)'
@@ -50,6 +49,10 @@ class Cargo:
         else:
             return None
 
+    def actualizar_cargo(self, id_cargo, nuevo_cargo):
+        consulta = 'UPDATE cargos SET cargo = ? WHERE id_cargo = ?'
+        self.base_de_datos.realizar_sentencia(consulta, (nuevo_cargo, id_cargo))
+
     def eliminar_cargo(self, id_cargo):
         consulta = 'DELETE FROM cargos WHERE id_cargo = ?'
         self.base_de_datos.ejecutar_sentencia(consulta, (id_cargo,))
@@ -60,8 +63,8 @@ class Cargo:
 #clase cliente
 
 class Cliente:
-    def __init__(self, nombre_db):
-        self.base_de_datos = BaseDeDatos(nombre_db)
+    def __init__(self, nombredb):
+        self.base_de_datos = base_de_datos(nombredb)
 
     def crear_cliente(self, nombre, telefono):
         consulta = 'INSERT INTO clientes (nombre, telefono) VALUES (?, ?)'
@@ -89,8 +92,8 @@ class Cliente:
 #clase proveedor
 
 class Proveedor:
-    def __init__(self, nombre_db):
-        self.base_de_datos = BaseDeDatos(nombre_db)
+    def __init__(self, nombredb):
+        self.base_de_datos = base_de_datos(nombredb)
 
     def crear_proveedor(self, nombre, telefono, tipo_de_productos=None):
         consulta = 'INSERT INTO proveedores (nombre, telefono, tipo_de_productos) VALUES (?, ?, ?)'
@@ -118,8 +121,8 @@ class Proveedor:
 #clase empleado
 
 class Empleado:
-    def __init__(self, nombre_db):
-        self.base_de_datos = BaseDeDatos(nombre_db)
+    def __init__(self, nombredb):
+        self.base_de_datos = base_de_datos(nombredb)
 
     def crear_empleado(self, nombre, id_cargo, telefono):
         consulta = 'INSERT INTO empleados (nombre, id_cargo, telefono) VALUES (?, ?, ?)'
@@ -147,8 +150,8 @@ class Empleado:
 #clase articulo
 
 class Articulo:
-    def __init__(self, nombre_db):
-        self.base_de_datos = BaseDeDatos(nombre_db)
+    def __init__(self, nombredb):
+        self.base_de_datos = base_de_datos(nombredb)
 
     def crear_articulo(self, nombre, especificacion, id_proveedor):
         consulta = 'INSERT INTO articulos (nombre, especificacion, id_proveedor) VALUES (?, ?, ?)'
@@ -176,8 +179,8 @@ class Articulo:
 #clase inventario
 
 class Inventario:
-    def __init__(self, nombre_db):
-        self.base_de_datos = BaseDeDatos(nombre_db)
+    def __init__(self, nombredb):
+        self.base_de_datos = base_de_datos(nombredb)
 
     def crear_transaccion(self, id_articulo, id_personal, cantidad, fecha, notas=None):
         consulta = 'INSERT INTO inventario (id_articulo, id_personal, cantidad, fecha, notas) VALUES (?, ?, ?, ?, ?)'
@@ -205,8 +208,8 @@ class Inventario:
 #clase servicio
 
 class Servicio:
-    def __init__(self, nombre_db):
-        self.base_de_datos = BaseDeDatos(nombre_db)
+    def __init__(self, nombredb):
+        self.base_de_datos = base_de_datos(nombredb)
 
     def crear_servicio(self, nombre, fecha, telefono_extra, cliente_id, id_personal):
         consulta = 'INSERT INTO servicios (nombre, fecha, telefono_extra, cliente_id, id_personal) VALUES (?, ?, ?, ?, ?)'
@@ -232,8 +235,8 @@ class Servicio:
         self.base_de_datos.cerrar_conexion()
 
 class EstadoServicio:
-    def __init__(self, nombre_db):
-        self.base_de_datos = BaseDeDatos(nombre_db)
+    def __init__(self, nombredb):
+        self.base_de_datos = base_de_datos(nombredb)
 
     def crear_estado_servicio(self, descripcion):
         consulta = 'INSERT INTO estado_servicio (descripcion) VALUES (?)'
