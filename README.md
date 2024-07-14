@@ -7,19 +7,22 @@ python3
 
 # Notas
 
-Esta api esta dibidida en 3 archivos principales que gestionan la creacion y el manejo de los datos asi como la expocicion de los mismos. 
+---
 
-Cbase.py se encarga de la creacion de la base de datos en sqlite3
-controlador.py se encarga de la gestion de la base de datos utilizando POO
-app.py se encarga de la api, sus rutas y expocicion. 
+Esta API está dividida en 3 archivos principales que gestionan la creación y el manejo de los datos, así como la exposición de los mismos.
 
-!!!Nota importante!!!
-TOMAR EN CUENTA QUE AL MOMENTO SOLO SE CUENTAN CON LAS RUTAS PARA LA TABLA CARGOS
-!!Nota importante!!!
+- **Cbase.py** se encarga de la creación de la base de datos en SQLite3.
+- **Controlador.py** se encarga de la gestión de la base de datos utilizando POO.
+- **App.py** se encarga de la API, sus rutas y exposición.
 
-por motivos de tiempo, aunque en el codigo del controlador.py se disponen de funciones para el manejo de todas las tablas de la base de datos, al momento de realizar la ultima actulizacion solo se cuentan con las rutas para la tabla de cargos. 
+**Nota importante:**
+TOMAR EN CUENTA QUE AL MOMENTO SOLO SE CUENTAN CON LAS RUTAS PARA LA TABLA CARGOS.
 
-Debido a lo anterior, este manual se enfoca en la tabla de cargos exclusivamente. 
+Por motivos de tiempo, aunque en el código del **Controlador.py** se disponen de funciones para el manejo de todas las tablas de la base de datos, al momento de realizar la última actualización solo se cuentan con las rutas para la tabla de cargos.
+
+Debido a lo anterior, este manual se enfoca en la tabla de cargos exclusivamente.
+
+---
 
 
 # Manual Básico de la API
