@@ -7,7 +7,7 @@ python3
 
 # Notas
 
-Esta api esta dibififa en 3 archivos principales que gestionan la creacion y el manejo de los datos asi como la expocicion de los mismos. 
+Esta api esta dibidida en 3 archivos principales que gestionan la creacion y el manejo de los datos asi como la expocicion de los mismos. 
 
 Cbase.py se encarga de la creacion de la base de datos en sqlite3
 controlador.py se encarga de la gestion de la base de datos utilizando POO
