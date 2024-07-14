@@ -222,4 +222,4 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-Este manual te proporcionará una guía básica para interactuar con tu API de Flask y realizar las operaciones CRUD en la tabla de "cargo". Si necesitas más detalles o alguna otra funcionalidad, no dudes en pedírmelo.
+Este manual proporciona una guía básica para interactuar con tu API de Flask y realizar las operaciones CRUD en la tabla de "cargos". 
