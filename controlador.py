@@ -5,29 +5,36 @@
 import sqlite3
 
 #creamos la clase que contrlara la  base de datos utilizando POO
+#se editan los hilos para poder manejar los datos
 
 class base_de_datos:
     def __init__(self, nombredb):
-        self.conexion = sqlite3.connect(nombredb)
-        self.cursor = self.conexion.cursor()
+        self.nombredb = nombredb
 
-    #realizamos funcion que nos permita gestionar las consultas.
+    def ejecutar_consulta(self, consulta, parametros=()):
+        conexion = sqlite3.connect(self.nombredb)
+        cursor = conexion.cursor()
+        cursor.execute(consulta, parametros)
+        resultados = cursor.fetchall()
+        conexion.close()
+        return resultados
 
-    def realizar_consulta(self, consulta, parametros=()):
-        self.cursor.execute(consulta, parametros)
-        return self.cursor.fechall()
+ #realizamos funcion que nos permita ajecutar diferentes sentencias (incert, delete, update etc.)
 
-    #realizamos funcion que nos permita ajecutar diferentes sentencias (incert, delete, update etc.)
+    def ejecutar_sentencia(self, sentencia, parametros=()):
+        conexion = sqlite3.connect(self.nombredb)
+        cursor = conexion.cursor()
+        cursor.execute(sentencia, parametros)
+        conexion.commit()
+        lastrowid = cursor.lastrowid
+        conexion.close()
+        return lastrowid
 
-    def realizar_sentencia(self, sentencia, parametros=()):
-        self.cursor.execute(sentencia,parametros)
-        self.conexion.commit()
-        return self.cursor.lastrowid
-
-    #creamos funcion que cierre la coneccion
+#creamos funcion que cierre la coneccion
 
     def cerrar_conexion(self):
-        self.conexion.close()
+        pass  # No necesitamos cerrar la conexión aquí
+
 
 #creamos cada una de las clases que se encargara de manejar las tablas de la bd.
 
